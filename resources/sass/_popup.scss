@@ -1,0 +1,10 @@
+.pop-up {
+
+	width:100%;
+
+	@include breakpoints('mobile-portrait') {
+		background-color: red;
+
+	}
+
+}
