@@ -10,6 +10,7 @@ class PageController extends Controller
 
     public function index()
     {
+        //Hallo, dit is de homepagina
         return view('index');
     }
     /**
