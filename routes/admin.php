@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/', 'PageController@index')->name('index');
+Route::get('/', 'AdminController@index')->name('index');
