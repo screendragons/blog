@@ -1,1 +1,9 @@
-index admin
+@extends('layouts.admin')
+
+
+
+
+
+
+
+

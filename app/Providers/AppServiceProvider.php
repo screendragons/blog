@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
+//fix for mariadb
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,8 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        //fix for mariadb
         Schema::defaultStringLength(191);
-        //
     }
 
     /**

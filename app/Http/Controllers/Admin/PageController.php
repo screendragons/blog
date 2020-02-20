@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Page;
+use Exception;
+use DB;
 
-class AdminController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +17,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $pages = Page::get();
+
+        return view('admin.pages.index')
+            ->with('pages', $pages);
     }
 
     /**
@@ -24,7 +30,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -35,7 +41,26 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        try {
+            DB::beginTransaction();
+
+            // logica
+            $page = new Page;
+            $page->title = $request->title;
+            $page->slug = $request->slug;
+            $page->body = $request->body;
+            $page->active = ($request->active) ? 1 : 0;
+            $page->save();
+
+            DB::commit();
+
+            return redirect()->route('pages.index');
+        }
+        catch(Exception $e) {
+            // later
+            DB::rollback();
+        }
     }
 
     /**
@@ -69,7 +94,17 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            DB::beginTransaction();
+
+            // logica
+
+            DB::commit();
+        }
+        catch(Exception $e) {
+            // later
+            DB::rollback();
+        }
     }
 
     /**
@@ -80,6 +115,17 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd('delete');
+        try {
+            DB::beginTransaction();
+
+            // logica
+
+            DB::commit();
+        }
+        catch(Exception $e) {
+            // later
+            DB::rollback();
+        }
     }
 }

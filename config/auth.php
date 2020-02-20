@@ -19,11 +19,11 @@ return [
     ],
 
     /*
-    |--------------------------------------------------------------------------
+    |---------------------------    | Next, you may define every authentication guard for your application.
+-----------------------------------------------
     | Authentication Guards
     |--------------------------------------------------------------------------
     |
-    | Next, you may define every authentication guard for your application.
     | Of course, a great default configuration has been defined for you
     | here which uses session storage and the Eloquent user provider.
     |

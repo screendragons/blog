@@ -10,9 +10,11 @@ class PageController extends Controller
 
     public function index()
     {
-        //Hallo, dit is de homepagina
+        // Hallo, dit is de home pagina
         return view('index');
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +22,13 @@ class PageController extends Controller
      */
     public function page(Request $request, $slug)
     {
-        $page = Page::where('slug', $slug)->firstOrFail();
-        // dd($Page);
-        return view('page')
-            ->with('page', $page);
+    	$page = Page::where('slug', $slug)
+        ->with('images')
+        ->firstOrFail();
 
+        // dd($page)->images[0]->extention
+        return view('page')
+        	->with('page', $page);
     }
 
     /**
